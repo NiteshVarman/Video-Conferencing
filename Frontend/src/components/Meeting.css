@@ -1,0 +1,214 @@
+/* CSS Variables for theming */
+:root {
+  --primary-color: #1976d2;
+  --background-color: #f0f0f0;
+  --text-color: #333;
+  --white: #fff;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --spacing: 10px;
+  --button-bg: #333;
+  --button-hover-bg: #555;
+  --end-call-bg: #d32f2f;
+  --end-call-hover-bg: #b71c1c;
+  --badge-bg: #ed6c02;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* Lobby (username input) */
+.lobby {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.lobby h2 {
+  margin-bottom: var(--spacing);
+}
+
+.username-input {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing);
+  font-size: 16px;
+}
+
+.connect-button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.connect-button:hover {
+  background-color: #1565c0;
+}
+
+/* Video container */
+.meet-video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--spacing);
+}
+
+/* Chat room */
+.chat-room {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 300px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+}
+
+.chat-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.chat-container h1 {
+  font-size: 24px;
+  margin-bottom: var(--spacing);
+}
+
+.chatting-display {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: var(--spacing);
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+.chatting-area {
+  display: flex;
+  gap: var(--spacing);
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+}
+
+.send-button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #1565c0;
+}
+
+/* Button containers */
+.button-containers {
+  display: flex;
+  gap: var(--spacing);
+  margin: var(--spacing) 0;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--button-bg);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.icon-button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.end-call {
+  background-color: var(--end-call-bg);
+}
+
+.end-call:hover {
+  background-color: var(--end-call-hover-bg);
+}
+
+/* Badge for chat notifications */
+.badge-wrapper {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--badge-bg);
+  color: var(--white);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+/* Video styles */
+.meet-user-video {
+  width: 300px;
+  height: 200px;
+  background-color: black;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+}
+
+/* Conference view (video grid) */
+.conference-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing);
+  width: 100%;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+}
