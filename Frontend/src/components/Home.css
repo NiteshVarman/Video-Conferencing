@@ -1,0 +1,167 @@
+/* Home Page Styles - Prefixed to avoid conflicts */
+
+.home-page {
+  width: 100% !important;
+  min-height: 100vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-container {
+  max-width: 1000px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.home-brand {
+  margin-bottom: 3rem;
+}
+
+.home-brand-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.home-brand-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.home-brand-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #fff, #e3f2fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-brand-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.home-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home-action-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-action-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.home-action-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.home-action-card p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.home-primary-btn,
+.home-secondary-btn {
+  background: white;
+  color: #1976d2;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.home-primary-btn:hover,
+.home-secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.home-join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Fixed: Input text visibility */
+.home-meeting-input {
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #1976d2 !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.home-meeting-input::placeholder {
+  color: rgba(25, 118, 210, 0.7) !important;
+}
+
+.home-meeting-input:focus {
+  outline: none;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #1976d2 !important;
+}
+
+@media (max-width: 768px) {
+  .home-brand-title {
+    font-size: 2rem;
+  }
+
+  .home-actions {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .home-action-card {
+    padding: 1.5rem;
+  }
+
+  .home-container {
+    padding: 1rem;
+  }
+}

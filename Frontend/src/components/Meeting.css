@@ -1,214 +1,763 @@
-/* CSS Variables for theming */
+/* Meeting Component Styles - All prefixed with 'meeting-' to avoid conflicts */
+
+/* CSS Variables */
 :root {
-  --primary-color: #1976d2;
-  --background-color: #f0f0f0;
-  --text-color: #333;
-  --white: #fff;
-  --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  --border-radius: 8px;
-  --spacing: 10px;
-  --button-bg: #333;
-  --button-hover-bg: #555;
-  --end-call-bg: #d32f2f;
-  --end-call-hover-bg: #b71c1c;
-  --badge-bg: #ed6c02;
+  --meeting-primary-color: #1976d2;
+  --meeting-primary-hover: #1565c0;
+  --meeting-secondary-color: #424242;
+  --meeting-success-color: #4caf50;
+  --meeting-danger-color: #f44336;
+  --meeting-warning-color: #ff9800;
+  --meeting-background-primary: #f5f5f5;
+  --meeting-background-secondary: #ffffff;
+  --meeting-background-dark: #1a1a1a;
+  --meeting-text-primary: #212121;
+  --meeting-text-secondary: #757575;
+  --meeting-text-light: #ffffff;
+  --meeting-border-color: #e0e0e0;
+  --meeting-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --meeting-shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --meeting-shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --meeting-border-radius: 12px;
+  --meeting-border-radius-small: 8px;
+  --meeting-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-}
-
-/* Main container */
-.container {
+/* Main App Container - Fixed to take full width and height */
+.meeting-app {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--background-color);
-}
-
-/* Lobby (username input) */
-.lobby {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.lobby h2 {
-  margin-bottom: var(--spacing);
-}
-
-.username-input {
-  padding: 8px;
-  width: 200px;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius);
-  margin-bottom: var(--spacing);
-  font-size: 16px;
-}
-
-.connect-button {
-  padding: 8px 16px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.connect-button:hover {
-  background-color: #1565c0;
-}
-
-/* Video container */
-.meet-video-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  padding: var(--spacing);
-}
-
-/* Chat room */
-.chat-room {
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  width: 300px;
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  z-index: 1000;
-}
-
-.chat-container {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 400px;
-}
-
-.chat-container h1 {
-  font-size: 24px;
-  margin-bottom: var(--spacing);
-}
-
-.chatting-display {
-  flex: 1;
-  overflow-y: auto;
-  margin-bottom: var(--spacing);
-}
-
-.message {
-  margin-bottom: 20px;
-}
-
-.sender {
-  font-weight: bold;
-}
-
-.chatting-area {
-  display: flex;
-  gap: var(--spacing);
-}
-
-.chat-input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius);
-  font-size: 14px;
-}
-
-.send-button {
-  padding: 8px 16px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-
-.send-button:hover {
-  background-color: #1565c0;
-}
-
-/* Button containers */
-.button-containers {
-  display: flex;
-  gap: var(--spacing);
-  margin: var(--spacing) 0;
-}
-
-.icon-button {
-  width: 40px;
-  height: 40px;
-  background-color: var(--button-bg);
-  color: var(--white);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.icon-button:hover {
-  background-color: var(--button-hover-bg);
-}
-
-.end-call {
-  background-color: var(--end-call-bg);
-}
-
-.end-call:hover {
-  background-color: var(--end-call-hover-bg);
-}
-
-/* Badge for chat notifications */
-.badge-wrapper {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
 }
 
-.badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: var(--badge-bg);
-  color: var(--white);
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 12px;
+/* Lobby Screen */
+.meeting-lobby {
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--meeting-background-primary);
+  padding: 2rem;
+  overflow: auto;
 }
 
-/* Video styles */
-.meet-user-video {
-  width: 300px;
-  height: 200px;
-  background-color: black;
-  border-radius: var(--border-radius);
-  object-fit: cover;
-}
-
-/* Conference view (video grid) */
-.conference-view {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing);
+.meeting-lobby-content {
+  background: var(--meeting-background-secondary);
+  border-radius: var(--meeting-border-radius);
+  box-shadow: var(--meeting-shadow-medium);
+  padding: 2.5rem;
+  max-width: 600px;
   width: 100%;
 }
 
-.video-wrapper {
+.meeting-lobby-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.meeting-lobby-header h2 {
+  font-size: 2rem;
+  color: var(--meeting-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.meeting-lobby-header p {
+  color: var(--meeting-text-secondary);
+  font-size: 1.1rem;
+}
+
+.meeting-preview-section {
+  margin-bottom: 2rem;
+}
+
+.meeting-video-preview {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: var(--meeting-border-radius);
+  overflow: hidden;
+  box-shadow: var(--meeting-shadow-light);
+}
+
+.meeting-preview-video {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background: var(--meeting-background-dark);
+}
+
+.meeting-preview-overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--meeting-text-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--meeting-border-radius-small);
+  backdrop-filter: blur(10px);
+}
+
+.meeting-preview-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.meeting-form-section {
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.meeting-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meeting-input-group label {
+  font-weight: 600;
+  color: var(--meeting-text-primary);
+  font-size: 0.95rem;
+}
+
+/* Fixed: Input text visibility */
+.meeting-form-input {
+  padding: 1rem;
+  border: 2px solid var(--meeting-border-color);
+  border-radius: var(--meeting-border-radius-small);
+  font-size: 1rem;
+  transition: var(--meeting-transition);
+  background: var(--meeting-background-secondary) !important;
+  color: var(--meeting-text-primary) !important;
+}
+
+.meeting-form-input:focus {
+  outline: none;
+  border-color: var(--meeting-primary-color);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  background: var(--meeting-background-secondary) !important;
+  color: var(--meeting-text-primary) !important;
+}
+
+.meeting-form-input::placeholder {
+  color: var(--meeting-text-secondary) !important;
+}
+
+.meeting-error-message {
+  color: var(--meeting-danger-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.meeting-info-section {
+  background: var(--meeting-background-primary);
+  padding: 1.5rem;
+  border-radius: var(--meeting-border-radius-small);
+  border: 1px solid var(--meeting-border-color);
+}
+
+.meeting-link-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--meeting-text-primary) !important;
+  font-size: 0.95rem;
+}
+
+.meeting-link-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.meeting-link-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--meeting-border-color);
+  border-radius: var(--meeting-border-radius-small);
+  background: var(--meeting-background-secondary) !important;
+  font-size: 0.9rem;
+  color: var(--meeting-text-primary) !important;
+}
+
+.meeting-copy-button {
+  padding: 0.75rem 1rem;
+  background: var(--meeting-success-color);
+  color: var(--meeting-text-light);
+  border: none;
+  border-radius: var(--meeting-border-radius-small);
+  cursor: pointer;
+  transition: var(--meeting-transition);
+}
+
+.meeting-copy-button:hover {
+  background: #45a049;
+}
+
+.meeting-primary-button {
+  background: var(--meeting-primary-color);
+  color: var(--meeting-text-light);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--meeting-border-radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--meeting-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--meeting-shadow-medium);
+}
+
+.meeting-primary-button:hover {
+  background: var(--meeting-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--meeting-shadow-heavy);
+}
+
+/* Meeting Room - Fixed to take full viewport */
+.meeting-room {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+  background: var(--meeting-background-dark);
+  color: var(--meeting-text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.meeting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.meeting-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.meeting-id {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.meeting-participant-count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Video Grid - Fixed to fit properly and handle single user */
+.meeting-video-grid {
+  flex: 1;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  align-content: center;
   justify-content: center;
+}
+
+/* Default grid for multiple users */
+.meeting-video-grid:not(.single-user) {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-content: start;
+}
+
+/* Single user layout - centered and larger */
+.meeting-video-grid.single-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.meeting-video-grid.single-user .meeting-local-video-container {
+  max-width: 800px;
+  max-height: 600px;
+  width: 80%;
+  height: auto;
+}
+
+.meeting-local-video-container,
+.meeting-remote-video-container {
+  position: relative;
+  background: var(--meeting-background-dark);
+  border-radius: var(--meeting-border-radius);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  box-shadow: var(--meeting-shadow-medium);
+  width: 100%;
+  max-width: 100%;
+}
+
+.meeting-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--meeting-background-dark);
+}
+
+.meeting-video-overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.meeting-participant-name {
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--meeting-text-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--meeting-border-radius-small);
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meeting-media-indicators {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.meeting-video-off-indicator {
+  background: rgba(244, 67, 54, 0.9);
+  color: var(--meeting-text-light);
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.meeting-video-off-indicator i {
+  font-size: 2rem;
+}
+
+.meeting-audio-off-indicator {
+  background: rgba(244, 67, 54, 0.9);
+  color: var(--meeting-text-light);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.meeting-audio-off-indicator i {
+  font-size: 1rem;
+}
+
+/* Control Bar - Fixed positioning */
+.meeting-control-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.meeting-control-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meeting-control-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--meeting-text-light);
+  cursor: pointer;
+  transition: var(--meeting-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  backdrop-filter: blur(10px);
+}
+
+.meeting-control-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.meeting-control-button.meeting-disabled {
+  background: var(--meeting-danger-color);
+}
+
+.meeting-control-button.meeting-disabled:hover {
+  background: #d32f2f;
+}
+
+.meeting-control-button.meeting-active {
+  background: var(--meeting-primary-color);
+}
+
+.meeting-control-button.meeting-active:hover {
+  background: var(--meeting-primary-hover);
+}
+
+.meeting-control-button.meeting-end-call {
+  background: var(--meeting-danger-color);
+}
+
+.meeting-control-button.meeting-end-call:hover {
+  background: #d32f2f;
+}
+
+.meeting-chat-button-container {
+  position: relative;
+}
+
+.meeting-notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--meeting-warning-color);
+  color: var(--meeting-text-light);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Chat Panel */
+.meeting-chat-panel {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  bottom: 2rem;
+  width: 350px;
+  background: var(--meeting-background-secondary);
+  border-radius: var(--meeting-border-radius);
+  box-shadow: var(--meeting-shadow-heavy);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  max-height: calc(100vh - 4rem);
+}
+
+.meeting-chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--meeting-border-color);
+  flex-shrink: 0;
+}
+
+.meeting-chat-header h3 {
+  color: var(--meeting-text-primary);
+  font-size: 1.2rem;
+}
+
+.meeting-close-button {
+  background: none;
+  border: none;
+  color: var(--meeting-text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--meeting-border-radius-small);
+  transition: var(--meeting-transition);
+}
+
+.meeting-close-button:hover {
+  background: var(--meeting-background-primary);
+  color: var(--meeting-text-primary);
+}
+
+.meeting-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.meeting-message-item {
+  background: var(--meeting-background-primary);
+  padding: 1rem;
+  border-radius: var(--meeting-border-radius-small);
+  border-left: 3px solid var(--meeting-primary-color);
+  animation: meetingFadeIn 0.3s ease-out;
+}
+
+.meeting-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.meeting-sender-name {
+  font-weight: 600;
+  color: var(--meeting-primary-color);
+  font-size: 0.9rem;
+}
+
+.meeting-message-time {
+  font-size: 0.8rem;
+  color: var(--meeting-text-secondary);
+}
+
+.meeting-message-content {
+  color: var(--meeting-text-primary);
+  line-height: 1.5;
+}
+
+.meeting-no-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--meeting-text-secondary);
+  text-align: center;
+}
+
+.meeting-no-messages i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.meeting-chat-input-section {
+  padding: 1rem;
+  border-top: 1px solid var(--meeting-border-color);
+  flex-shrink: 0;
+}
+
+.meeting-input-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Fixed: Chat input text visibility */
+.meeting-chat-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--meeting-border-color);
+  border-radius: var(--meeting-border-radius-small);
+  font-size: 0.9rem;
+  background: var(--meeting-background-secondary) !important;
+  color: var(--meeting-text-primary) !important;
+}
+
+.meeting-chat-input:focus {
+  outline: none;
+  border-color: var(--meeting-primary-color);
+  background: var(--meeting-background-secondary) !important;
+  color: var(--meeting-text-primary) !important;
+}
+
+.meeting-chat-input::placeholder {
+  color: var(--meeting-text-secondary) !important;
+}
+
+.meeting-send-button {
+  padding: 0.75rem 1rem;
+  background: var(--meeting-primary-color);
+  color: var(--meeting-text-light);
+  border: none;
+  border-radius: var(--meeting-border-radius-small);
+  cursor: pointer;
+  transition: var(--meeting-transition);
+}
+
+.meeting-send-button:hover {
+  background: var(--meeting-primary-hover);
+}
+
+/* Animations */
+@keyframes meetingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar Styling */
+.meeting-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.meeting-chat-messages::-webkit-scrollbar-track {
+  background: var(--meeting-background-primary);
+  border-radius: 3px;
+}
+
+.meeting-chat-messages::-webkit-scrollbar-thumb {
+  background: var(--meeting-text-secondary);
+  border-radius: 3px;
+}
+
+.meeting-chat-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--meeting-text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .meeting-header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .meeting-video-grid:not(.single-user) {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .meeting-video-grid.single-user {
+    padding: 1rem;
+  }
+
+  .meeting-control-bar {
+    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .meeting-control-group {
+    gap: 0.5rem;
+  }
+
+  .meeting-control-button {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .meeting-chat-panel {
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    top: 1rem;
+    bottom: 1rem;
+  }
+
+  .meeting-lobby-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .meeting-participant-count {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .meeting-video-grid:not(.single-user) {
+    gap: 0.25rem;
+    padding: 0.25rem;
+  }
+
+  .meeting-control-button {
+    width: 44px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .meeting-header {
+    padding: 0.75rem;
+  }
+
+  .meeting-control-bar {
+    padding: 0.75rem;
+  }
+
+  .meeting-participant-count span {
+    display: none;
+  }
+
+  .meeting-participant-count::after {
+    content: attr(data-count);
+  }
+}
+
+/* Focus Styles for Accessibility */
+.meeting-control-button:focus,
+.meeting-primary-button:focus,
+.meeting-form-input:focus,
+.meeting-chat-input:focus {
+  outline: 2px solid var(--meeting-primary-color);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --meeting-border-color: #000000;
+    --meeting-text-secondary: #000000;
+    --meeting-background-primary: #ffffff;
+    --meeting-background-secondary: #ffffff;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .meeting-app * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

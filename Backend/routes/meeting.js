@@ -7,9 +7,11 @@ const router = express.Router();
 router.post('/new', async (req, res) => {
   try {
     const meetingId = uuidv4();
+    const meetingLink = `http://localhost:5000/join/${meetingId}`;
+
     const meeting = new Meeting({ meetingId });
     await meeting.save();
-    const meetingLink = `${req.protocol}://${req.get('host')}/join/${meetingId}`;
+
     res.status(201).json({ meetingId, meetingLink });
   } catch (error) {
     console.error('Error creating meeting:', error);
