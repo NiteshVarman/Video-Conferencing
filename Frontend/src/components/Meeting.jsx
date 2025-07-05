@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom"
 import io from "socket.io-client"
 import "./Meeting.css"
 
-const server_url = "http://localhost:5000"
+const server_url = 'http://13.62.58.30:5000';
+
 
 const peerConfigConnections = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],

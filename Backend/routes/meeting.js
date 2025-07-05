@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/new', async (req, res) => {
   try {
     const meetingId = uuidv4();
-    const meetingLink = `http://localhost:5000/join/${meetingId}`;
+    const meetingLink = `${process.env.BASE_URL}/join/${meetingId}`;
 
     const meeting = new Meeting({ meetingId });
     await meeting.save();

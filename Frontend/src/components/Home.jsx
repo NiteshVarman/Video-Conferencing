@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
-const server_url = 'http://localhost:5000';
+const server_url = 'http://13.62.58.30:5000';
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -23,15 +24,15 @@ export default function Home() {
       alert('Error creating meeting');
     }
   };
-
-  const joinMeeting = () => {
-    if (meetingId.trim()) {
-      navigate(`/join/${meetingId}`);
-    } else {
-      alert('Please enter a meeting ID');
-    }
-  };
-
+  
+    const joinMeeting = () => {
+      if (meetingId.trim()) {
+        navigate(`/join/${meetingId}`);
+      } else {
+        alert('Please enter a meeting ID');
+      }
+    };
+  
   return (
     <div className="home-page">
       <div className="home-container">
