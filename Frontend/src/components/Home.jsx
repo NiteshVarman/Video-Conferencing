@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
-const server_url = 'http://13.51.167.182:5000';
+const server_url = 'https://api.video-meet.tech';
 
 
 export default function Home() {
