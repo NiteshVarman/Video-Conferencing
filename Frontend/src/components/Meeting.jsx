@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import io from "socket.io-client"
 import "./Meeting.css"
 
-const server_url = 'https://api.video-meet.tech';
+const server_url = 'https://api.video-meet.me';
 
 
 const peerConfigConnections = {
